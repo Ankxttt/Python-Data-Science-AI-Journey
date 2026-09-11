@@ -26,8 +26,8 @@
 # str1 = "ankit kumar"
 # print(str1[3:]) #indexing[3:9]
 
-str1 = "python language"
-print(str1[:-3]) #slicing[-15:-3]
+# str1 = "python language"
+# print(str1[:-3]) #slicing[-15:-3]
 
 # Name = input("enter your name :")
 # print("length of your name is :", len(Name))
@@ -126,5 +126,38 @@ print(str1[:-3]) #slicing[-15:-3]
 # str = ("my name is ankit kumar")
 # str = (str.capitalize())
 # print(str)
+
+#function and recursion
+# def cal_sum(a, b, c):
+#     sum = a + b + c
+#     avg = sum / 2
+
+#     return sum
+# print(cal_sum(12, 234, 345))
+
+# def cal_avg(a, b):
+#     return (a + b / 2)
+
+# print(cal_avg(123, 344))
+
+# def print_factor(n):
+#     factor = 1
+#     for i in range(1, n + 1):
+#         factor *= 1
+#         print(factor)
+
+#     print(print_factor(8))
+# list = input("enter the value :")
+# def print_len(list):
+#     return list
+# print(len(list))
+
+cities = ["delhi", "goa", "madras", "mumbai", "delhi", "indore"]
+
+def print_item(list):
+    for item in list:
+        print(item, end=" ")
+
+print_item(cities) 
 
 

@@ -790,6 +790,6 @@
 # }
 # print(dict)
 
-subject = {"python", "java", "c++", "python", "javascript", "python", "c++", "c"}
-print(type(subject))
-print(len(subject))
+# subject = {"python", "java", "c++", "python", "javascript", "python", "c++", "c"}
+# print(type(subject))
+# print(len(subject))
