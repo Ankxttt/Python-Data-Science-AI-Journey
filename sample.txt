@@ -1,0 +1,3 @@
+my name is ankit kumar.
+i am learning python and after that i will learn js.
+i am learning for data analytics and full stack developer.
