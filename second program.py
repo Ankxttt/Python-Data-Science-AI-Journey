@@ -152,12 +152,97 @@
 #     return list
 # print(len(list))
 
-cities = ["delhi", "goa", "madras", "mumbai", "delhi", "indore"]
+# cities = ["delhi", "goa", "madras", "mumbai", "delhi", "indore"]
 
-def print_item(list):
-    for item in list:
-        print(item, end=" ")
+# def print_item(list):
+#     for item in list:
+#         print(item, end=" ")
 
-print_item(cities) 
+# print_item(cities) 
+
+#pattern recognition problem in nested loop.
+# """
+# *
+# * *
+# * * *
+# * * * *
+# * * * * *
+# """
+# for i in range(1, 6):
+#     for j in range(1, 6):
+#         print("*", end=" ")
+#     print()
+#"""
+# *
+# * *
+# * * *
+# * * * *
+# * * * * *
+#"""
+# r = 5
+# for i  in range(1, r+1):
+#     for j in range(1, i+1):
+#         print("*", end=" ")
+#     print()   
+
+# """
+# * * * * *
+# * * * *
+# * * * 
+# * *
+# *
+# """
+
+# n = 5
+# for i in range(n, 0, -1):
+#     for j in range(i):
+#         print("*", end=" ")
+#     print()
+
+# """
+# 1
+# 1 2
+# 1 2 3
+# 1 2 3 4
+# 1 2 3 4 5
+# """
+
+# n = 6
+# for i in range(1, 6):
+#     for j in range(1, i+1):
+#         print(j, end=" ")
+#     print()
+
+# """
+# 1 2 3 4 5
+# 1 2 3 4
+# 1 2 3 
+# 1 2 
+# 1
+# """
+n = 6
+# for i in range(n, 0, -1):
+#     for j in range(i, 0, -1):
+#         print(j, end=" ")
+#     print()
+
+# """
+#      *
+#     * *
+#    * * *   
+#   * * * *
+# * * * * * *   
+# """
+
+n = 6
+for i in range(1, n + 1):
+    spaces = n - i
+    stars = 2 * i - 1
+
+    print(" " * spaces + "*" * stars)
+
+
+
+
 
 
