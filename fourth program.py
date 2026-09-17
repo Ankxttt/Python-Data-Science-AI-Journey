@@ -30,28 +30,28 @@
 # s3 = Student("karan", 20)
 # print(s3.name, s3.age)
 
-class Student:
-    #class attribute.
-    college_name = "xyz college"
+# class Student:
+#     #class attribute.
+#     college_name = "xyz college"
 
-    def __init__(self, name, age, marks, branch): #object attribute.  (object attribute > class attribute)
-        self.name = name
-        self.age = age
-        self.marks = marks
-        self.branch = branch
+#     def __init__(self, name, age, marks, branch): #object attribute.  (object attribute > class attribute)
+#         self.name = name
+#         self.age = age
+#         self.marks = marks
+#         self.branch = branch
 
-    def hello(self):
-        print("hello world")    
+#     def hello(self):            #method / function in class.
+#         print("hello world")    
 
-s1 = Student("ankit", 19, 94, "computer")
-s2 = Student("karan", 20, 88, "electrical")
-s3 = Student("arjun", 21, 73, "civil")
-s1.hello()
+# s1 = Student("ankit", 19, 94, "computer")
+# s2 = Student("karan", 20, 88, "electrical")
+# s3 = Student("arjun", 21, 73, "civil")
+# s1.hello()
 
-print(s1.name, s1.age, s1.marks, s1.branch)
-print(s2.name, s2.age, s2.marks, s2.branch)
-print(s3.name, s3.age, s3.marks, s3.branch)
-print(s1.college_name)
+# print(s1.name, s1.age, s1.marks, s1.branch)
+# print(s2.name, s2.age, s2.marks, s2.branch)
+# print(s3.name, s3.age, s3.marks, s3.branch)
+# print(s1.college_name)
 
 
 # class Student:

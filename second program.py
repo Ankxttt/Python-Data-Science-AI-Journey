@@ -161,88 +161,157 @@
 # print_item(cities) 
 
 #pattern recognition problem in nested loop.
-"""
-*
-* *
-* * *
-* * * *
-* * * * *
-"""
-for i in range(1, 6):
-    for j in range(1, 6):
-        print("*", end=" ")
-    print()
-"""
+# """
 # *
 # * *
 # * * *
 # * * * *
 # * * * * *
-#"""
-r = 5
-for i  in range(1, r+1):
-    for j in range(1, i+1):
-        print("*", end=" ")
-    print()   
+# """
+# for i in range(1, 6):
+#     for j in range(1, 6):
+#         print("*", end=" ")
+#     print()
+# """
+# # *
+# # * *
+# # * * *
+# # * * * *
+# # * * * * *
+# #"""
+# r = 5
+# for i  in range(1, r+1):
+#     for j in range(1, i+1):
+#         print("*", end=" ")
+#     print()   
 
-"""
-* * * * *
-* * * *
-* * * 
-* *
-*
-"""
+# """
+# * * * * *
+# * * * *
+# * * * 
+# * *
+# *
+# """
 
-n = 5
-for i in range(n, 0, -1):
-    for j in range(i):
-        print("*", end=" ")
-    print()
+# n = 5
+# for i in range(n, 0, -1):
+#     for j in range(i):
+#         print("*", end=" ")
+#     print()
 
-"""
-1
-1 2
-1 2 3
-1 2 3 4
-1 2 3 4 5
-"""
+# """
+# 1
+# 1 2
+# 1 2 3
+# 1 2 3 4
+# 1 2 3 4 5
+# """
 
-n = 6
-for i in range(1, 6):
-    for j in range(1, i+1):
-        print(j, end=" ")
-    print()
+# n = 6
+# for i in range(1, 6):
+#     for j in range(1, i+1):
+#         print(j, end=" ")
+#     print()
 
-"""
-1 2 3 4 5
-1 2 3 4
-1 2 3 
-1 2 
-1
-"""
-n = 6
-for i in range(n, 0, -1):
-    for j in range(i, 0, -1):
-        print(j, end=" ")
-    print()
+# """
+# 1 2 3 4 5
+# 1 2 3 4
+# 1 2 3 
+# 1 2 
+# 1
+# """
+# n = 6
+# for i in range(n, 0, -1):
+#     for j in range(i, 0, -1):
+#         print(j, end=" ")
+#     print()
 
-"""
-     *
-    * *
-   * * *   
-  * * * *
-* * * * * *   
-"""
+# """
+#      *
+#     * *
+#    * * *   
+#   * * * *
+# * * * * * *   
+# """
 
-n = 6
-for i in range(1, n + 1):
-    spaces = n - i
-    stars = 2 * i - 1
+# n = 6
+# for i in range(1, n + 1):
+#     spaces = n - i
+#     stars = 2 * i - 1
 
-    print(" " * spaces + "*" * stars)
+#     print(" " * spaces + "*" * stars)
+# practice json and csv file operations using csv and json module in python.
 
+# import json 
 
+# output = {"name" : "ankit", "age" : 19, "course" : "data science"}
 
+# with open("output.json", "w") as file:
+#     json.dump(output, file, indent= 4)
 
+# with open("output.json", "r") as file:
+#     data = json.load(file)
+
+# print(data)
+# print(type(data))
+
+# json_string = json.dumps(output)   #this method is used to convert python object into json string.
+# print(json_string)
+# print(type(json_string))
+
+# python_object = json.loads(json_string)   # ths method is used to convert json string into python object.
+# print(python_object)
+# print(type(python_object))
+
+import csv
+
+# rows = [
+#     ["name","age","marks"],
+#     ["ankit",19,88],
+#     ["amit",21,81]
+# ]
+
+# with open("rows.csv", "w", newline="") as file:  #this method is used to write csv file(data).
+#     writer = csv.writer(file)
+#     writer.writerows(rows)
+    
+# with open("rows.csv", "r", newline="") as file:   #this method is used to read csv file(data).
+#     reader = csv.reader(file)
+
+#     for rows in file:
+#         print(rows)
+
+rows = [
+    {"name":"ankit","age":19,"marks":88},
+    {"name":"arjun","age":21,"marks":90},
+    {"name":"raju","age":20,"marks":99},
+]
+
+with open("rows.csv", "w", newline="") as file:  #this method is used to write dictionary csv file(data).
+    fieldnames = ["name", "age", "marks"]
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(rows)
+
+# with open("rows.csv", "r") as file:   #this method is used to read dictionary csv file(data).
+#     reader = csv.DictReader(file)
+
+#     for rows in reader:
+#         print(rows["name"], rows["age"] ,rows["marks"])
+
+# how to convert json into csv & csv into json.
+
+import csv
+import json
+
+with open("rows.csv", "r")as csvfile:
+    reader = csv.DictReader(csvfile)
+
+    data = list(reader)
+
+with open("conveted.json", "w")as jsonfile:
+    json.dump(data, jsonfile, indent=4)
+
+    print("csv converted into json successfully...")
 
 

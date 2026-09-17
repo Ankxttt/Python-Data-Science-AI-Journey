@@ -1,0 +1,17 @@
+[
+    {
+        "name": "ankit",
+        "age": "19",
+        "marks": "88"
+    },
+    {
+        "name": "arjun",
+        "age": "21",
+        "marks": "90"
+    },
+    {
+        "name": "raju",
+        "age": "20",
+        "marks": "99"
+    }
+]
