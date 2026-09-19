@@ -100,7 +100,30 @@
 # account1.debit(1000, 223422)
 # account1.credit(900, 223422)
 
+class Student:
+    def __init__(self, name, marks, subject):
+        self.name = name
+        self.marks = marks
+        self.subject = subject
 
+    def get_avg(self):
+        sum = 0
+        for val in self.marks:
+            val += sum
+        print("welcome", self.name, "your avg score is :", sum/3, "in", self.subject)
+
+s1 = Student("ankit", [89, 90, 99], "maths")
+s1.get_avg()
+
+
+
+
+ 
+
+
+
+
+     
 
 
 

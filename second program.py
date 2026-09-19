@@ -240,6 +240,7 @@
 #     stars = 2 * i - 1
 
 #     print(" " * spaces + "*" * stars)
+
 # practice json and csv file operations using csv and json module in python.
 
 # import json 
@@ -263,7 +264,7 @@
 # print(python_object)
 # print(type(python_object))
 
-import csv
+# import csv
 
 # rows = [
 #     ["name","age","marks"],
@@ -281,17 +282,17 @@ import csv
 #     for rows in file:
 #         print(rows)
 
-rows = [
-    {"name":"ankit","age":19,"marks":88},
-    {"name":"arjun","age":21,"marks":90},
-    {"name":"raju","age":20,"marks":99},
-]
+# rows = [
+#     {"name":"ankit","age":19,"marks":88},
+#     {"name":"arjun","age":21,"marks":90},
+#     {"name":"raju","age":20,"marks":99},
+# ]
 
-with open("rows.csv", "w", newline="") as file:  #this method is used to write dictionary csv file(data).
-    fieldnames = ["name", "age", "marks"]
-    writer = csv.DictWriter(file, fieldnames=fieldnames)
-    writer.writeheader()
-    writer.writerows(rows)
+# with open("rows.csv", "w", newline="") as file:  #this method is used to write dictionary csv file(data).
+#     fieldnames = ["name", "age", "marks"]
+#     writer = csv.DictWriter(file, fieldnames=fieldnames)
+#     writer.writeheader()
+#     writer.writerows(rows)
 
 # with open("rows.csv", "r") as file:   #this method is used to read dictionary csv file(data).
 #     reader = csv.DictReader(file)
@@ -301,17 +302,65 @@ with open("rows.csv", "w", newline="") as file:  #this method is used to write d
 
 # how to convert json into csv & csv into json.
 
-import csv
-import json
+# import csv
+# import json
 
-with open("rows.csv", "r")as csvfile:
-    reader = csv.DictReader(csvfile)
+# with open("rows.csv", "r")as csvfile:  # this method is used to read csv file.
+#     reader = csv.DictReader(csvfile)
 
-    data = list(reader)
+#     data = list(reader)      # we store csv dictreader in data variable.
 
-with open("conveted.json", "w")as jsonfile:
-    json.dump(data, jsonfile, indent=4)
+# with open("conveted.json", "w")as jsonfile:    # this method is used to create a json file with csc data which is converted into it.
+#     json.dump(data, jsonfile, indent=4)
 
-    print("csv converted into json successfully...")
+#     print("csv converted into json successfully...")
 
+# practice list , dictionary, set comprehensions:
 
+# list comprehension.
+# list1 = [12, 45, 3, 6, 0, 89, 43, 3 ,33] # syntax for using list comprehension.
+# print("using list comprehension", [item for item in list1 if item % 3 == 0])
+
+# for item in list1:
+#     divide_by_3 = []
+#     for item in list1:
+#         if item % 3 == 0:
+#            divide_by_3.append(item)
+# print("without using list comprehension", divide_by_3)
+
+# without using list comprehension.
+# number = []
+# for i in range(100):
+#     if i % 3 == 0:
+#         number.append(i)
+# print(number)
+
+#using list comprehension.
+# list = [i for i in range(100) if i % 3 == 0]
+# print(list)
+
+# Examples of list comprehension:
+# list = [x**2 for x in range(10)]
+# print(list)
+
+# using if condition in list comprehension:
+# even = [x for x in range(10) if x % 2 == 0]  # filtering even numbers.
+# print(even)
+
+# using if-else condition in list comprehension:
+# numbers = ["Even" if x % 2 == 0 else "Odd" for x in range(10)]  # replacing even numbers with 'Even' & odd with 'Odds'
+# print(numbers)
+
+# using nested loops in list comprehension:
+# pairs = [(x, y) for x in range(2) for y in range(3)]  # creating pairs from two lists.
+# print(pairs)
+
+# using function in list comprehension:
+# language = ["python", "java", "c++", "javascript"]
+# upper_words = [language.upper() for language in language]  # convert list of strings in uppercase.
+# print(upper_words)
+
+# list comprehension with nested list comprehension:
+Matrix = [[1,2], [3, 4], [5, 6], [7, 8]]
+flattend = [num for row in Matrix for num in row]
+print(flattend)
