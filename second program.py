@@ -361,6 +361,43 @@
 # print(upper_words)
 
 # list comprehension with nested list comprehension:
-Matrix = [[1,2], [3, 4], [5, 6], [7, 8]]
-flattend = [num for row in Matrix for num in row]
-print(flattend)
+# Matrix = [[1,2], [3, 4], [5, 6], [7, 8]]
+# flattend = [num for row in Matrix for num in row]  # Flattending 2D list.
+# print(flattend)
+
+# dictionary comprehension:
+# square = {x : x * x for x in range(1,11)}    # key:value for item in iterables.
+# print(square)
+
+#using f-string with if condition in dictionary comprehension:
+# dict1 = {i : f"items{i}" for i in range(1,11) if i % 2 == 0}
+# print(dict1)
+
+# dictionary comprehension:
+# name = ["ankit", "ajay", "raju", "vijay"]
+
+# dict = {name : len(name) for name in name}
+# print(dict)
+
+#set comprehension:
+
+# unique_numbers = {x for x in [1, 2, 4, 4, 2, 1, 3, 6, 6, 3]}  # start with curly braces without(:) is known as set.
+# print(unique_numbers)
+
+# number = {x * 2 for x in range(1, 11) if x % 2 == 0}  # we can use range() function & conditions in set comprehension. 
+# print(number)
+
+# set comprehension with conditions: 
+# value = range(1, 5)               # we store range values in (value) named variable.
+# numbers = {x ** 2 for x in value if x % 2 == 0}
+# print(value)
+
+# set comprehension with unique numbers:
+# cars_unique = {cars_unique for cars_unique in ["bmw", "audi", "lexus", "bmw", "audi", "mercedes", "lexus"]}
+# print(cars_unique)                   # in sets only unique values will be print, duplicate value will not.
+# print(type(cars_unique))
+
+pairs = {x for x in range(1, 19) if x % 2 == 0}
+print(pairs)
+
+
