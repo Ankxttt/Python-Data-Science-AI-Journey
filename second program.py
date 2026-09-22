@@ -384,20 +384,68 @@
 # unique_numbers = {x for x in [1, 2, 4, 4, 2, 1, 3, 6, 6, 3]}  # start with curly braces without(:) is known as set.
 # print(unique_numbers)
 
-# number = {x * 2 for x in range(1, 11) if x % 2 == 0}  # we can use range() function & conditions in set comprehension. 
+# number = {x * 2 for x in range(1, 11) if x % 2 == 0}  # we can use range() function & if conditions in set comprehension. 
 # print(number)
 
 # set comprehension with conditions: 
 # value = range(1, 5)               # we store range values in (value) named variable.
 # numbers = {x ** 2 for x in value if x % 2 == 0}
-# print(value)
+# print(numbers)
 
 # set comprehension with unique numbers:
 # cars_unique = {cars_unique for cars_unique in ["bmw", "audi", "lexus", "bmw", "audi", "mercedes", "lexus"]}
 # print(cars_unique)                   # in sets only unique values will be print, duplicate value will not.
 # print(type(cars_unique))
 
-pairs = {x for x in range(1, 19) if x % 2 == 0}
-print(pairs)
+# pairs = {x for x in range(1, 19) if x % 2 == 0}
+# print(pairs)
+
+#Lambda functions:
+
+# without using lambda function:
+# def add(a, b):    # it take multi line to define function and peform operation.
+#     return a+b
+# print("without using lambda function :")
+# print("without using lambda function", add(19, 2))
+
+# using lambda function:
+# total_sum = lambda x, y: x+y   # it perform in a single expression without full definition def.
+# print("using lambda function",total_sum(19, 2))
+
+# lambda function with multiple argument:
+# average = lambda x, y, z: (x + y + z)/3   # lambda function with multiple arguments.
+# print(average(5, 10, 46))
+#Ex:
+# cube = lambda x: x*x*x
+# print(cube(5))
+#Ex2:
+# square = lambda x: x**2
+# print(square(19))
+
+# using if-else or ternaary operator with lambda function:
+# vote = lambda age: "eligible" if age >= 18 else "not eligible"  # we can use single line if/else expression with lambda function.
+# print(vote(18))
+
+# using lambda function with map() function:
+# numbers = [1, 4, 5, 3, 8, 12]
+# value = map(lambda x: x * x, numbers)  # suppose i want to print the square of all given no. in list with the help of map().
+# print(list(value))      # we use list to represent the transformed element because it doesn't directly the list, it return special map object.
+
+#Ex2: print dobule of given no. in list using map() with lambda function:
+# value = [1, 4, 5, 8, 2, 5, 2]
+# double = map(lambda x: x**2 , value)        
+# print(list(double))
+
+# using lambda function with filter() function:
+element = [1, 4, 7, 3, 9, 2, 10]    
+# pairs = filter(lambda x: x < 6, element)  # filter() filters the element based on predicate/condition and return new sequence of list.
+#  # print(list(pairs))
+
+#Ex2:
+unique = filter(lambda x: x % 2 == 0, element)
+print(list(unique))
+
+
+
 
 
