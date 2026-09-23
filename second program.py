@@ -425,6 +425,9 @@
 # using if-else or ternaary operator with lambda function:
 # vote = lambda age: "eligible" if age >= 18 else "not eligible"  # we can use single line if/else expression with lambda function.
 # print(vote(18))
+#Ex2:
+# Maximum = lambda x, y: x if x > y else y
+# print(Maximum(99, 99.2))
 
 # using lambda function with map() function:
 # numbers = [1, 4, 5, 3, 8, 12]
@@ -437,15 +440,50 @@
 # print(list(double))
 
 # using lambda function with filter() function:
-element = [1, 4, 7, 3, 9, 2, 10]    
+# element = [1, 4, 7, 3, 9, 2, 10]
 # pairs = filter(lambda x: x < 6, element)  # filter() filters the element based on predicate/condition and return new sequence of list.
 #  # print(list(pairs))
-
 #Ex2:
-unique = filter(lambda x: x % 2 == 0, element)
-print(list(unique))
+# unique = filter(lambda x: x % 2 == 0, element)
+# print(list(unique))
+#Ex3:
+# element = [12, 45, 67, 56, 67, 89, 2]
+# pair = list(filter(lambda x: x <= 45, element))
+# print(pair)
 
+# using lambda function with reduce() function:
+# from functools import reduce     # firstly, we need to import it from functools module from python.
+# val = [12 ,45, 6, 32, 89, 50]
+# sum = reduce(lambda x, y: x + y, val)   # it perform functions on each element and produce the final result in a single value.
+# print(sum)                                          # reduce = combine
+#Ex2:
+# product = reduce(lambda x, y : x * y, val)
+# print(product)
+#Ex3:
+# Division = reduce(lambda x, y: x / y, val)
+# print(Division)
 
+# using lambda function with sort() function:
+# marks = [[1, 4],[5, 2], [3, 7], [9, 8]]             # we create a pair of list within the list.
+# result = sorted(marks, key = lambda x: x[1])       # we sort the pair of list in ascending order.
+# print(result)
+#Ex2: using sort() function in reverse order:
 
+# students = [("rahul", 97), ("arjun", 88), ("smriti", 81), ("ankit", 99)]
+# marks = sorted(students, key=lambda x : x[1], reverse=True)
+# print(marks)
 
+# we can write them in different ways:
+
+# students.sort(key = lambda student: student[1])
+# print(students)
+students = [
+    ("raju", 81),
+    ("arvind", 85),
+    ("rajesh", 88),
+    ("sanjeev", 91)
+]
+
+students.sort(key = lambda students : students[1], reverse=True)
+print(students)
 
