@@ -162,11 +162,11 @@
 
 #pattern recognition problem in nested loop.
 # """
-# *
-# * *
-# * * *
 # * * * *
-# * * * * *
+# * * * *
+# * * * *
+# * * * *
+# * * * * 
 # """
 # for i in range(1, 6):
 #     for j in range(1, 6):
@@ -477,13 +477,127 @@
 
 # students.sort(key = lambda student: student[1])
 # print(students)
-students = [
-    ("raju", 81),
-    ("arvind", 85),
-    ("rajesh", 88),
-    ("sanjeev", 91)
-]
+# students = [
+#     ("raju", 81),
+#     ("arvind", 85),
+#     ("rajesh", 88),
+#     ("sanjeev", 91)
+# ]
 
-students.sort(key = lambda students : students[1], reverse=True)
-print(students)
+# students.sort(key = lambda students : students[1], reverse=True)   # it sort the list in reverse order.
+# print(students)
+
+# practice with Exception handling using try(), except(), else(), finally:
+# Now we write an normal program to print the table of any no:
+# but i think there is an error in my first 10 to 12 line of code, so i put it into a try block and it help to catch the error and except block will be executed.
+# try:    # it there is no error in code, it will execute or if any error occurred
+#     num = int(input("enter the number :"))
+#     print(f"multiplication of", num, "is :")
+#     a = [1, 12]
+#     print(a[num])
+
+#     # for i in range(1, 11):
+#     #     print(f"{num} x {i} = {i*num}")
+
+# except ValueError:
+#     print("sorry!, the value you Entered is not an integer.")
+
+# except SyntaxError:  # we can handle many errors by using multiple except block and it will help to handle the error.
+#     print("sorry! there is an invalid syntax.")
+
+# except IndexError:
+#     print("sorry! there is an index error.")
+
+
+# print("sorry there is an problem in the program.")  # this line will print which shows that our program will always executing, it will not stop, that's why we use try,except block.
+# print("program ended")
+
+# using error handling in my program:
+# try:   # suppose I think there is an error in my program, so i put it into an try block, if there is any error, it will catch and except block will be executed.
+#     num1  = int(input("enter the first no:"))
+#     num2 = int(input("enter the second no:"))
+  
+#     sum = num1 + num2
+#     print(f"sum of", num1, "and", num2, "is", sum)
+
+# except ValueError:   # is any error occurred in my code of try block, then i can handle it with except block.
+#     print("sorry the value you entered is not integer")
+# except SyntaxError:   # we can handle multiple errors and with the help of multiple except block.
+#     print("sorry there is syntax error occurred in your program")
+
+
+# print("End of program")  # this will help to make our program to always run and avoid the program hault/stopness.
+# using an finally with try and except block:
+# try:
+#     num = int(input("enter the no :"))
+#     a = [1, 4]
+#     print(a[num])
+
+# except ValueError:
+#     print("there is an value error.")
+
+# except IndexError:
+#     print("there is an index error.")
+
+# finally:  # this block is always executed whether error occurred or not, it also used to cleanup the code, no matter what happens,but at end what we have to do is more important.
+#     print("end of program.")
+#Ex: why we use finally block , we can print anything at the end , but when we put the try,except block in function, it will not print, that's why we use finally block to cleanup the code and doing concluding task.
+# try:
+
+#     l = [1, 5 ,7 ,8]
+#     i = int(input("enter the no :"))
+#     print(l[i])
+
+# except IndexError:
+#     print("there is an index error.")
+
+# except ValueError:
+#     print("there is an value error.")
+
+# else:
+#     print("program successfully run.")
+
+# finally:
+#     print("program ended...")  # this will always executed beacause it helps to cleanup the code and always executed.
+
+# practice with custom errors: we handle multiple errors to execute our program, but sometimes we create error to stop
+# the execution of program at the first error which doesn't effect our rest of program.
+
+# n = int(input("enter the value between 3 and 5 :"))
+# print(n)
+
+# if(n > 3 and n > 5):
+
+#    raise ValueError("the value you entered is not between 3 and 5.") # we can raise a custom error according to our purpose and stop the execution at earliest.
+
+# raise a custom error based on condition:
+# try:
+#     balance = int(input("enter the balance amount :"))
+#     withdraw = int(input("enter the withdraw amount :"))
+
+#     if (withdraw > balance):
+#         raise ValueError("insufficient balance")
+
+# except ValueError as e :
+#     print("error :", e)
+
+while True:
+    try:
+        value = input("enter the value ( 3-5 or quiet) :")
+
+        if value.lower == "quiet" :
+            print("program ended successfully.")
+
+            value = int(value)
+
+        if  value > 3 or value < 5:
+            raise ValueError("entered the value between 3 and 5.")
+
+        print("you entered :", value)        
+    except ValueError as e:
+        print("Error :", e)
+
+
+
+
 
