@@ -580,23 +580,22 @@
 
 # except ValueError as e :
 #     print("error :", e)
+#Ex: using try, except, with raise a custom error:
+# while True:
+#     try:
+#         value = input("enter the value ( 3-5 or quiet) :")
 
-while True:
-    try:
-        value = input("enter the value ( 3-5 or quiet) :")
+#         if value.lower == "quiet" :
+#             print("program ended successfully.")
 
-        if value.lower == "quiet" :
-            print("program ended successfully.")
+#             value = int(value)
 
-            value = int(value)
+#         if  value > 3 or value < 5:
+#             raise ValueError("entered the value between 3 and 5.")
 
-        if  value > 3 or value < 5:
-            raise ValueError("entered the value between 3 and 5.")
-
-        print("you entered :", value)        
-    except ValueError as e:
-        print("Error :", e)
-
+#         print("you entered :", value)        
+#     except ValueError as e:
+#         print("Error :", e)
 
 
 
