@@ -87,12 +87,12 @@
 #     def debit(self, amount, account_no):
 #         self.balance -= amount
 #         print("Rs", amount, "was debited from account no :", account_no)
-#         print("total balance", self.get_balance())
+#         print("total balance :", self.get_balance())
 
 #     def credit(self, amount, account_no):
 #         self.balance += amount
 #         print("Rs", amount, "was credit in your account no :", account_no)
-#         print("total balance", self.get_balance())
+#         print("total balance :", self.get_balance())
 
 #     def get_balance(self):
 #         return self.balance
@@ -287,51 +287,143 @@
 # print(c1.VarA, c1.VarB, c1.VarC)
 
 # using super()method which helps to inherit all attributes and methods of parent class.
-class car:
-    def __init__(self, name):
-          self.name = name
+# class car:    # base class with methods and attributes.
+#     def __init__(self, name):
+#           self.name = name
 
-    @staticmethod
-    def start():
-           print("car started...")
+#     @staticmethod
+#     def start():
+#            print("car started...")
 
-    @staticmethod
-    def stop():
-           print("car stopped...")      
+#     @staticmethod
+#     def stop():
+#            print("car stopped...")      
 
-class Landrover(car):
-        def __init__(self, name, model, version):
-            super().__init__(name)
-            self.model = model
-            self.version = version
+# class Landrover(car):    # child class which inherit attri. & methods of base class with super()method.
+#         def __init__(self, name, model, version):
+#             super().__init__(name)
+#             self.model = model
+#             self.version = version
 
-        def type_info(self):
-            print("type : SUV")
+#         def type_info(self):
+#             print("type : SUV")
 
-class RangeRover(Landrover):
-      def __init__(self, name, variant, segment, model, version):
-            super().__init__(name, model, version)
-            self.variant = variant
-            self.segment = segment
+# class RangeRover(Landrover):  # another child class which inherit properties and attribute and methods from both base class and derived class which become base for this class.
+#       def __init__(self, name, variant, segment, model, version):    # if we don't use @staticmethod to call function, we can access them by call self in the paranthesis.
+#             super().__init__(name, model, version)
+#             self.variant = variant
+#             self.segment = segment
 
-car1 = RangeRover("autobiography", "petrol", "3.2 litre", 2024, "hybrid")
+# car1 = RangeRover("scorpio", "petrol", "3.2 litre", 2024, "hybrid")
 
+# print(car1.name)   # we can access all teh attributes and methods of base class by using super() method.
+# car1.start()
+# print(car1.variant)
+# print(car1.segment)
+# print(car1.model)
+# print(car1.version)
+# car1.type_info()
+#Ex: using super() method to access attri. & methods of parent class.
+# class car:
+#     def __init__(self, name, color):
+#         self.name = name
+#         self.color = color
+
+#     @classmethod
+#     def start(cls):
+#         print("car started...")
+
+#     @classmethod
+#     def stop(cls):
+#         print("car stopped...")
+
+# class toyota(car):
+#     def __init__(self, name, color, model, version):
+#         super().__init__(name, color)
+#         self.model = model
+#         self.version = version
+
+#     @staticmethod
+#     def type_info():
+#         print("type : suv")    
+
+# class fortuner(toyota):
+#     def __init__(self, name, color, model, version, variant, segment):
+#         super().__init__(name, color, model, version)
+#         self.variant = variant
+#         self.segment = segment
+#         super().start()
+#         super().type_info()
+
+# car1 = fortuner("fortuner", "black", 2026, "variant : petrol", "3.2 litre", "suv")
+# print(car1.name)
+# print(car1.color)
+# print(car1.model)
+# print(car1.version)
+# print(car1.variant)
+
+# using class method to access, modify or perform operation on the paticular class attributes and methods.
+# class car:  # we create a baseclass car with name attri. (fortuner) and try to change it with new one.
+#      name = "fortuner"
+
+#      def changename(self, new_name):  # so, we create a object method to change the name of class car.
+#           self.name = new_name        # but it didn't change the name of base class, it create a new name attri. for that object and change name of that object not i base class.
+
+# car1 = car()                          # we create object.
+# car1.changename("scorpio")        # we try to change name of base class, but it create new name attri. for that object instead of changing name of base class car, which means we cannot change name of class attr. with the object method because it didn't access them.
+# print(car.name)
+# print(car1.name)          
+
+#Ex: we can change it by using various technique like: using class name, using __class__ constructor.
+class car:   # we create base class with name atri.
+    name = "mahindra"
+
+    def changename(self, new_name):  # we create method to change name of class with new name by object method(self).
+        self.__class__.name = new_name         # 1st technique: we can change it by calling name of class in object method, and 2nd technique is we can call __class__ constructor in object methods with its refernce(self).
+        car.name = new_name
+
+car1 = car()
+car1.changename("toyota")
 print(car1.name)
-print(car1.variant)
-print(car1.segment)
-print(car1.model)
-print(car1.version)
-car1.start()
-car1.type_info()
+print(car.name)
+
+#Ex: using @classmethod decorator to access, modify or perform operation on class attri. & methods.
+# class car:    # base class with class attributes and methods.
+#     name = "scorpio"     # we pass class attri. name and color to access and modify them by using class method.
+#     color = "black"
+
+#     def __init__(cls, name, color):  # we create constructor and 1st implicit argument is cls which is a refernce to class attri. & method just like (self) for object attri. & methods.
+#         cls.name = name
+#         cls.color = color
+
+#     @classmethod     # we pass class method decorator to which convert function into class method and we used to access and modify them.
+#     def start(cls):
+#         print("engine started...")
+
+#     @classmethod     
+#     def stop(cls):
+#         print("engine stopped...")
+
+#     @classmethod     # we create a class method to change the name of car by using @classmethod decorator.
+#     def change_name(cls, new_name):   # first implicit argument is cls then parameters
+#         cls.name = new_name           # same like a self parameter which is used toa access and modify the object attri. and methods, cls is the refrence for class attri. & methods.
+#         print("car name changed to :", cls.name)    # it will print the new name of base class car.
+
+# class mahindra(car):      # derived class which inherit base class attri. and methods.
+#     def __init__(self, name, color):    # constructor created for the ojects attri. and methods by calling self.
+#             super().__init__(name, color)
+#             self.name = name
+#             self.color = color
+#             super().start()
 
 
+# car1 = mahindra("fortuner", "black")
+# print(car1.name)
+# print(car.name)            # we print it didn't change the name of base class.
+# car.change_name("bolero")  # we can change name of base class and then we will print, it will change the name permanently.
+# print(car.name, car.color)
 
-
-
-
-
-
-
+# print(car.name)
 
 
 
