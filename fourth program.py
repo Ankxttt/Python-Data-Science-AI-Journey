@@ -375,17 +375,17 @@
 # print(car1.name)          
 
 #Ex: we can change it by using various technique like: using class name, using __class__ constructor.
-class car:   # we create base class with name atri.
-    name = "mahindra"
+# class car:   # we create base class with name atri.
+#     name = "mahindra"
 
-    def changename(self, new_name):  # we create method to change name of class with new name by object method(self).
-        self.__class__.name = new_name         # 1st technique: we can change it by calling name of class in object method, and 2nd technique is we can call __class__ constructor in object methods with its refernce(self).
-        car.name = new_name
+#     def changename(self, new_name):  # we create method to change name of class with new name by object method(self).
+#         self.__class__.name = new_name         # 1st technique: we can change it by calling name of class in object method, and 2nd technique is we can call __class__ constructor in object methods with its refernce(self).
+#         car.name = new_name
 
-car1 = car()
-car1.changename("toyota")
-print(car1.name)
-print(car.name)
+# car1 = car()
+# car1.changename("toyota")
+# print(car1.name)
+# print(car.name)
 
 #Ex: using @classmethod decorator to access, modify or perform operation on class attri. & methods.
 # class car:    # base class with class attributes and methods.
@@ -415,15 +415,77 @@ print(car.name)
 #             self.name = name
 #             self.color = color
 #             super().start()
+#             super().stop()
 
 
 # car1 = mahindra("fortuner", "black")
 # print(car1.name)
 # print(car.name)            # we print it didn't change the name of base class.
 # car.change_name("bolero")  # we can change name of base class and then we will print, it will change the name permanently.
-# print(car.name, car.color)
-
 # print(car.name)
+
+# without using an @property decorator to any method of class to use that method as a property(attribute).
+# suppose we have an attributes which their value will change in future, it's value is not fixed, so it depend on another function and we use that function as a property.
+# class subject:  # class of subject
+#     def __init__(self, phy, chem, maths):  # we have 3 attri. of subject class
+#         self.phy = phy
+#         self.chem = chem
+#         self.maths = maths
+#         self.percentage = str((self.phy + self.chem + self.maths)/ 3) + "%"  # we perform operation get percentage from 3 subject. suppose one of the subject mark get change in future then we have to store new percentage. 
+
+#     def cal_percentage(self): #we create a method get percentage
+#         self.percentage = str((self.phy + self.chem + self.maths)/3) + "%"
+
+# cgpa = subject(89, 82, 85)  # marks of 3 subject.
+
+# print(cgpa.phy)
+# print(cgpa.percentage)
+
+# cgpa.phy = 99              # suppose marks get change from any subject in future then we have to get new percentage according to it, so we have to change it manually.
+# print(cgpa.phy)            # which is very complex and take much line of codes.
+# cgpa.cal_percentage()
+# print(cgpa.percentage)
+
+#using @property decorator to perform same task:
+# class Student:                            #class of student
+#     def __init__(self, phy, chem, maths):    # 3 attri. 
+#         self.phy = phy
+#         self.chem = chem
+#         self.maths = maths
+
+#     @property                           # now we use property decorator in class mehtod which make method as property/attr and their value change in future, then the method will change automatically,not need to perform manually.
+#     def percentage(self):
+#         return str((self.phy + self.chem + self.maths)/3) + "%"
+
+# stu1 = Student(91, 90, 88)
+
+# print(stu1.phy)
+# print(stu1.percentage)
+
+# stu1.phy = 80                # attri. value change then their percentage will automatically changed.
+# print(stu1.percentage)       # that's why we use @property to any method of class and objects.   
+# print(stu1.phy)
+
+#Ex: using @property decorator
+class Employee:
+    def __init__(self, salary, bonus):
+        self.salary = salary
+        self.bonus = bonus
+
+    @property
+    def total_salary(self):
+        return str(self.salary + self.bonus)
+        print("TOTAL SALARY :", total_salary)
+    
+    
+
+emp1 = Employee(50000, 5000)       
+
+print(emp1.salary, emp1.bonus)
+print(emp1.total_salary)
+
+emp1.salary = 60000
+print(emp1.total_salary)
 
 
 
