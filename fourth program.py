@@ -467,25 +467,92 @@
 # print(stu1.phy)
 
 #Ex: using @property decorator
-class Employee:
-    def __init__(self, salary, bonus):
-        self.salary = salary
-        self.bonus = bonus
+# class Employee:                         # employee have salary and bonus.
+#     def __init__(self, salary, bonus):
+#         self.salary = salary
+#         self.bonus = bonus
+
+#     @property                            # we use @property decorator to calculate total salary, if any one of attri. change, then total_salary will change automatically and we can print them without calling or using ()parenthesis.
+#     def total_salary(self):
+#         return str(self.salary + self.bonus)
+        
+# emp1 = Employee(50000, 5000)       
+
+# print(emp1.salary, emp1.bonus)
+# print(emp1.total_salary)                 # we call that method as an attribute with using()parenthesis and no need call the method, it allow to controlled access to object's attributes.
+
+# emp1.salary = 60000               # salary change then total salary change automatically, no need to do it manually and we can call them without ()parenthesis.
+# print(emp1.total_salary)
+
+#Ex:
+class subject:
+    def __init__(self, marks1, marks2):
+        self._marks1 = marks1
+        self._marks2 = marks2
 
     @property
-    def total_salary(self):
-        return str(self.salary + self.bonus)
-        print("TOTAL SALARY :", total_salary)
+    def marks1(self):
+        return self._marks1
+
+    @marks1.setter
+    def marks1(self, value):
+        if 0 < value <= 100:
+            self._marks1 = value
+
+        else:
+            print("Invalid marks")
+
+    @property
+    def marks2(self):
+        return self._marks2
+
+    @marks2.setter
+    def marks2(self, value):
+        if 0 < value <= 100:
+            self.marks2 = value
+
+        else:
+            print("Invalid marks")
+
+    @property
+    def total_marks(self):
+        return str(self.marks1 + self.marks2)
     
-    
+result = subject(89, 90)
+print(result.total_marks)
 
-emp1 = Employee(50000, 5000)       
+result.marks1 = 99
+print(result.total_marks)
 
-print(emp1.salary, emp1.bonus)
-print(emp1.total_salary)
-
-emp1.salary = 60000
-print(emp1.total_salary)
+del result.marks1
 
 
+#Ex:
+# class person:
+#     def __init__(self, _age):
+#         self.age = _age
 
+#     @property
+#     def age(self):
+#         return self._age
+
+#     @age.setter
+#     def age(self, value):
+#         if value >= 0:
+#             self._age = value
+
+#         else:
+#             print("Age cannot be negative.")
+
+# p = person(20)
+# print(p._age)
+
+# p.age = 19
+# print(p.age)
+#Ex:using @property with @setter decorator to set attribute of a method which become an attribute by using property decorator.
+# class Employee:
+#     def __init__(self, fname, lname):
+#         self.fname = fname
+#         self.lname = lname
+
+#     def
