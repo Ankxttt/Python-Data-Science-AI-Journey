@@ -472,7 +472,7 @@
 #         self.salary = salary
 #         self.bonus = bonus
 
-#     @property                            # we use @property decorator to calculate total salary, if any one of attri. change, then total_salary will change automatically and we can print them without calling or using ()parenthesis.
+#     @property                            # we use @property decorator to calculate total salary, if any one of attri. change, then total_salary will change automatically and we can print them without calling method and using ()parenthesis.
 #     def total_salary(self):
 #         return str(self.salary + self.bonus)
         
@@ -481,53 +481,50 @@
 # print(emp1.salary, emp1.bonus)
 # print(emp1.total_salary)                 # we call that method as an attribute with using()parenthesis and no need call the method, it allow to controlled access to object's attributes.
 
-# emp1.salary = 60000               # salary change then total salary change automatically, no need to do it manually and we can call them without ()parenthesis.
+# emp1.salary = 60000               #if salary change then total salary change automatically, no need to do it manually and we can call them without ()parenthesis.
 # print(emp1.total_salary)
 
-#Ex:
-class subject:
-    def __init__(self, marks1, marks2):
-        self._marks1 = marks1
-        self._marks2 = marks2
+#Ex: using @property decorator with getter and setter to print marks by putting validation in the value:(condtion)
+# class subject:                       # we create class subject.
+#     def __init__(self, marks1, marks2):
+#         self._marks1 = marks1        # we use _marks instead of marks because setter call it again & again which causes recursion. we use _marks as an private-convention storage where value stored and marks is used as an public controlled property.
+#         self._marks2 = marks2     # simply marks is a public property and _marks is a private/backing attribute which store value in it and we can be access through the property because we don't want to access them directly outside the class which increase the chance of changes/modification to the store value in it.
 
-    @property
-    def marks1(self):
-        return self._marks1
+#     @property
+#     def marks1(self):           # suppose we don't want outside code to access/modify actual store value, so we keep it into the _value as private-convention-storage and expose the value through the property,so the value is public controlled interface and _value is where the data stored and when we call obj.value,it return value store in _value.
+#         return self._marks1      # we don't use normal self.marks because when sel.value call the value property again and again which causes infinite recursion.
 
-    @marks1.setter
-    def marks1(self, value):
-        if 0 < value <= 100:
-            self._marks1 = value
+#     @marks1.setter          # it used to put validation to value and give control over changing of an attribute outside the class.
+#     def marks1(self, value):  # it give control over(anyone can change the stored value outside the class) and it avoid to put any invalid data.
+#         if 0 < value <= 100:
+#             self._marks1 = value
 
-        else:
-            print("Invalid marks")
+#         else:
+#             print("Invalid marks")
 
-    @property
-    def marks2(self):
-        return self._marks2
+#     @property                 # Each attr. have its own property and each property has its own getter,setter,deleter.
+#     def marks2(self):         
+#         return self._marks2
 
-    @marks2.setter
-    def marks2(self, value):
-        if 0 < value <= 100:
-            self.marks2 = value
+#     @marks2.setter
+#     def marks2(self, value):
+#         if 0 < value <= 100:
+#             self._marks2 = value
 
-        else:
-            print("Invalid marks")
+#         else:
+#             print("Invalid marks")
 
-    @property
-    def total_marks(self):
-        return str(self.marks1 + self.marks2)
+#     @property         # it also represent calculated value which depends on other attributes, it didn't store it separately, it calculate it whenever we access them.
+#     def total_marks(self):   # whenever attr. change then the new derived/calculated value print automatically, no need to store it manually everytime.
+#         return str(self.marks1 + self.marks2)    
     
-result = subject(89, 90)
-print(result.total_marks)
+# result = subject(89, 90)
+# print(result.total_marks)  # so, it tell other propgrammer we didn't directly access and call obj._value , we can acccess the value through the @property. 
 
-result.marks1 = 99
-print(result.total_marks)
+# result.marks2 = 150
+# print(result.total_marks)
 
-del result.marks1
-
-
-#Ex:
+#Ex2:
 # class person:
 #     def __init__(self, _age):
 #         self.age = _age
@@ -547,12 +544,131 @@ del result.marks1
 # p = person(20)
 # print(p._age)
 
-# p.age = 19
+# p.age = -100
 # print(p.age)
-#Ex:using @property with @setter decorator to set attribute of a method which become an attribute by using property decorator.
-# class Employee:
-#     def __init__(self, fname, lname):
-#         self.fname = fname
-#         self.lname = lname
 
-#     def
+#Ex: using @ property decorator with getter and setter and put validation inside the the value by using _value name convention which help to store value in private/backing attribute.
+# class Mycls:
+#     def __init__(self, value):
+#         self._value = value
+
+#     @property
+#     def value(self):
+#         return self._value
+
+#     @value.setter
+#     def value(self, value):
+#         if 0 < value <= 100:
+#             self._value = value
+
+#         else:
+#             print("Invalid value...")
+
+# cls1 = Mycls(90)
+
+# print(cls1.value)
+
+# cls1.value = 100
+# print(cls1.value)
+
+#Ex: using @property decorator with @setter and @deleter decorators.
+# class car:
+#     def __init__(self, model, number):
+#         self._model = model
+#         self._number = number
+
+#     @property
+#     def model(self):
+#         return self._model
+
+#     @model.setter
+#     def model(self, value):
+#         if 2018 < value <= 2026:
+#             self._model = value
+
+#         else:
+#             print("Model is not valid")                                                                                   
+
+#     @property
+#     def number(self):
+#         return self._number
+
+#     @number.setter
+#     def number(self, value):
+#         if 0000 < value <= 9999:
+#             self._number = value
+
+#         else:
+#             print("Number is not available")
+
+#     @number.deleter
+#     def number(self):
+#         del self._number       
+
+# mahindra = car(2020, 8019)
+
+# print(mahindra.model)
+# print(mahindra.number)
+
+# mahindra.model = 2021
+# print(mahindra.model)
+
+# del mahindra._number
+# print(mahindra._number)
+
+#Ex: using @property with @setter to put validation to the value and give control over changing the values of objects.
+# class Subject:
+#     def __init__(self, marks):
+#         self._marks = marks
+
+    
+#     def show(self):
+#         print(f"this is {self._marks}")
+
+#     @property
+#     def marks(self):
+#         return 10*self._marks
+
+#     @marks.setter
+#     def marks(self, new_value):
+#         self._marks = new_value/10
+
+# s1 = Subject(40)
+
+# print(s1.marks)
+
+# s1.marks = 100
+# print(s1.marks)
+# s1.show()
+
+#Ex: using @property and @setter to print email and change the email using split()function.
+class Employee:                          # class Employee
+    def __init__(self, fname, lname):
+        self._fname = fname           #first parameter first name.
+        self._lname = lname           #second parameter second name.
+
+    def show(self):                 # we create a normal function show() to print attri.
+        print (f"This is {self._fname} {self._lname}.")  
+ 
+    @property                          # now, we use @propeerty decorator return email.
+    def email(self):
+        return (f"{self._fname}.{self._lname}@gmail.com")    # in this we use format() string method to print value in a single line of code which increase code readability.
+
+    @email.setter            #then, we use @setter decorator to put validation on name values and give control over changing the email's first name and last name.
+    def email(self, new):
+        name = new.split("@")[0]    # we use split() function to change first and last name of the email and return to the user with new email.
+        self._fname, self._lname  = name.split(".")
+
+    @email.deleter
+    def email(self):
+        del sub.email
+    
+
+sub = Employee("Ankit", "Kumar")
+print(sub.email)
+sub.show()
+
+sub.email = "raju.rajiv@gmail.com"
+print(sub.email)      # we call them as an attribute not like a method with () parenthesis.
+del sub.email
+print(sub.email)
