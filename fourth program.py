@@ -484,7 +484,7 @@
 # emp1.salary = 60000               #if salary change then total salary change automatically, no need to do it manually and we can call them without ()parenthesis.
 # print(emp1.total_salary)
 
-#Ex: using @property decorator with getter and setter to print marks by putting validation in the value:(condtion)
+#Ex: using @property decorator with getter and setter to print marks by putting validation in the value:(condition)
 # class subject:                       # we create class subject.
 #     def __init__(self, marks1, marks2):
 #         self._marks1 = marks1        # we use _marks instead of marks because setter call it again & again which causes recursion. we use _marks as an private-convention storage where value stored and marks is used as an public controlled property.
@@ -641,34 +641,125 @@
 # print(s1.marks)
 # s1.show()
 
-#Ex: using @property and @setter to print email and change the email using split()function.
-class Employee:                          # class Employee
-    def __init__(self, fname, lname):
-        self._fname = fname           #first parameter first name.
-        self._lname = lname           #second parameter second name.
+#Ex: using @property with @setter and @deleter to print email and change the email using split()function.
+# class Employee:                          # class Employee
+#     def __init__(self, fname, lname):
+#         self._fname = fname           #first parameter first name.
+#         self._lname = lname           #second parameter second name.
 
-    def show(self):                 # we create a normal function show() to print attri.
-        print (f"This is {self._fname} {self._lname}.")  
+#     def show(self):                 # we create a normal function show() to print attri.
+#         print (f"This is {self._fname} {self._lname}.")  
  
-    @property                          # now, we use @propeerty decorator return email.
-    def email(self):
-        return (f"{self._fname}.{self._lname}@gmail.com")    # in this we use format() string method to print value in a single line of code which increase code readability.
+#     @property                          # now, we use @property decorator to return email.
+#     def email(self):
+#         return (f"{self._fname}.{self._lname}@gmail.com")    # in this we use format() string method to print value in a single line of code which increase code readability.
 
-    @email.setter            #then, we use @setter decorator to put validation on name values and give control over changing the email's first name and last name.
-    def email(self, new):
-        name = new.split("@")[0]    # we use split() function to change first and last name of the email and return to the user with new email.
-        self._fname, self._lname  = name.split(".")
+#     @email.setter            #then, we use @setter decorator to put validation on name values and give control over changing the email's first name and last name.
+#     def email(self, new):
+#         name = new.split("@")[0]    # we use split() function to change first and last name of the email and return to the user with new email.
+#         self._fname, self._lname  = name.split(".")
 
-    @email.deleter
-    def email(self):
-        del sub.email
+#     @email.deleter
+#     def email(self):
+#         del self.email
     
 
-sub = Employee("Ankit", "Kumar")
-print(sub.email)
-sub.show()
+# sub = Employee("Ankit", "Kumar")
+# print(sub.email)
+# sub.show()
 
-sub.email = "raju.rajiv@gmail.com"
-print(sub.email)      # we call them as an attribute not like a method with () parenthesis.
-del sub.email
-print(sub.email)
+# sub.email = "raju.rajiv@gmail.com"
+# print(sub.email)      # we call them as an attribute not like a method with () parenthesis.
+# del sub.email
+# print(sub.email)
+
+# class student:
+#     def __init__(self, name):
+#         self.__name = name
+
+#     def __display(self):
+#         return self.__name
+
+#     def show(self):
+#         print("This is Private data :", self.__display())
+
+# S1 = student("ankit")
+
+# print(S1.show())
+#Ex: we can access private attri. and methods in one class without inheritance.
+# class Employee:
+#     def __init__(self):
+#         self.__name = "Ankit kumar"
+#         self.__email = "AK1513008@gmail.com"
+
+#     def __private(self):
+#         print ("Prvate method called :")
+#         print ("Name =", self.__name,"\nEmail =", self.__email)
+
+#     def show_data(self):
+#             self.__private()
+
+# emp1 = Employee()
+# emp1.show_data()
+
+#Ex: we access private attri. & methods from parent to child class without the concept of inheritance.
+
+# class Student:                        # parent class 
+#     def __init__(self):
+#         self.__acc_no = [258_443_435]       # private attri.
+#         self.__acc_pass = 356075
+
+#     def ___info(self):                     # private method which access the private attri. within the class.
+#         print("private method called :")
+#         print("Acc_no :",self.__acc_no,"\nPASSWORD :", self.__acc_pass)
+
+#     def show(self):                    # public method which the private method and access the attri. within class.
+#         self.___info()             # we can access them outside the class too by calling the public method outside the class and it call the private attri.
+
+# class Account:           # child class which can access attri and method of the parent class without the concept of inheritance in it.
+#     def __init__(self, Student):      # we create an constructor and call the student object as an argument in derived class.
+#         Student.show()                   # then we call that public method of parent class.
+
+
+# s1 = Student()
+# Acc = Account(s1)   # create an object of derived class and pass parent class obj in it.
+
+# s1.show()          # then, we call that public method.
+
+#Ex:
+class Result:
+    def __init__(self, marks1, marks2):
+        self.__marks1 = marks1
+        self.__marks2 = marks2
+
+    @property
+    def __info(self):
+        print(self.__marks1, self.__marks2) 
+
+    @__info.setter
+    def __info(self, new_marks):
+        if 0 < new_marks <= 100:
+            self.__info = new_marks
+
+        else:
+            print("Invalid marks")   
+
+    def show_marks(self):
+        self.__info()
+
+s1 = Result(98,99)
+
+s1.show_marks()
+
+s1.marks1 = 71
+print(s1.marks1)
+s1.show_marks()
+
+
+
+
+      
+
+#polymorphism: It's came from greek word poly which means 'many' and morphus mean 'form' that means,it has ability to take many form.
+# In oops, Same methods, function and operators can perform different operations based on the object, data in which we used it.
+# it has many forms like:
