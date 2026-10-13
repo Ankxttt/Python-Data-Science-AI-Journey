@@ -669,10 +669,11 @@
 # sub.show()
 
 # sub.email = "raju.rajiv@gmail.com"
-# print(sub.email)      # we call them as an attribute not like a method with () parenthesis.
+# print(sub.email)      # we call them as an attribute not like a method without () parenthesis.
 # del sub.email
 # print(sub.email)
 
+#Ex: access private attri. and methods by using public method outside the class.
 # class student:
 #     def __init__(self, name):
 #         self.__name = name
@@ -686,8 +687,9 @@
 # S1 = student("ankit")
 
 # print(S1.show())
+
 #Ex: we can access private attri. and methods in one class without inheritance.
-# class Employee:
+# class Employee:              # create class employee with only one parameter because when we want to provide fixed value to attris. then we can only pass one parameter(self).
 #     def __init__(self):
 #         self.__name = "Ankit kumar"
 #         self.__email = "AK1513008@gmail.com"
@@ -699,7 +701,7 @@
 #     def show_data(self):
 #             self.__private()
 
-# emp1 = Employee()
+# emp1 = Employee()             # no need to pass value at the time of creating object.
 # emp1.show_data()
 
 #Ex: we access private attri. & methods from parent to child class without the concept of inheritance.
@@ -726,40 +728,65 @@
 
 # s1.show()          # then, we call that public method.
 
-#Ex:
-class Result:
-    def __init__(self, marks1, marks2):
-        self.__marks1 = marks1
-        self.__marks2 = marks2
+#Ex: put validation and modification to private attribute by using public method.
+# class Result:
+#     def __init__(self, marks1, marks2):
+#         self.__marks1 = marks2
+#         self.__marks2 = marks1
 
-    @property
-    def __info(self):
-        print(self.__marks1, self.__marks2) 
+#     def validate_marks1(self, value):
+#         if 0 < value <= 100:
+#             self.__marks1 = value
+#             print("New_marks1 updated successfully...")
 
-    @__info.setter
-    def __info(self, new_marks):
-        if 0 < new_marks <= 100:
-            self.__info = new_marks
+#         else:
+#             print("Invalid marks...")
 
-        else:
-            print("Invalid marks")   
+#     def validate_marks2(self, value):
+#         if 0 < value <= 100:
+#             self.__marks2 = value
+#             print("New_marks2 updated successfully...")
 
-    def show_marks(self):
-        self.__info()
+#         else:
+#             print("Invalid marks...")
+                    
+#     def show_marks(self):
+#         print("marks1 :", self.__marks1)
+#         print("marks2 :", self.__marks2)
 
-s1 = Result(98,99)
+# r1 = Result(80, 88)
 
-s1.show_marks()
-
-s1.marks1 = 71
-print(s1.marks1)
-s1.show_marks()
-
-
-
-
-      
+# r1._Result.__marks1()
+# r1.validate_marks1(90)
+# print(r1.show_marks())
 
 #polymorphism: It's came from greek word poly which means 'many' and morphus mean 'form' that means,it has ability to take many form.
 # In oops, Same methods, function and operators can perform different operations based on the object, data in which we used it.
-# it has many forms like:
+# it has many forms like: operator over loading, built-in functions, method overloading, method overriding, dunder functions, duck typing.
+# we can use these concept with or without concept of inheritance.
+#Ex: this is a common approach to use (+) operator without concept of inheritance.
+# class Complex:
+#     def __init__(self, num1, num2):
+#         self.num1 = num1
+#         self.num2 = num2
+
+#     def show(self):
+#         return (self.num1 + self. num2)
+
+# com = Complex(90, 80)
+
+# print(com.show())
+
+class Sum:
+    def __init__(self, num):
+        self. num = num
+
+    def __add__(self, other):
+        print(self.num + other.num)
+
+s1 = Sum(10)
+s2 = Sum(20)
+
+print(s1 + s2)
+
+    
