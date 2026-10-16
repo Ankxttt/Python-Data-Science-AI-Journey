@@ -776,17 +776,32 @@
 # com = Complex(90, 80)
 
 # print(com.show())
+#Ex1: operator overloading using special method to define behaviour of operator when we use it in our own classes object & data.
+class Car:
 
-class Sum:
-    def __init__(self, num):
-        self. num = num
+    def show(self):
+        print("car started with powerful engine.")
 
-    def __add__(self, other):
-        print(self.num + other.num)
+class Truck:
 
-s1 = Sum(10)
-s2 = Sum(20)
+    def show(self):
+        print("truck started...")
 
-print(s1 + s2)
+class Bike:
 
-    
+    def show(self):
+        print("bike engine started...")
+
+def vehicle_show(vehicle):
+    vehicle.show()
+
+c1 = Car()
+t1 = Truck()
+b1 = Bike()
+
+vehicle_show(Car())
+vehicle_show(Bike())
+vehicle_show(Truck())
+
+
+
