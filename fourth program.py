@@ -316,7 +316,7 @@
 
 # car1 = RangeRover("scorpio", "petrol", "3.2 litre", 2024, "hybrid")
 
-# print(car1.name)   # we can access all teh attributes and methods of base class by using super() method.
+# print(car1.name)   # we can access all the attributes and methods of base class by using super() method.
 # car1.start()
 # print(car1.variant)
 # print(car1.segment)
@@ -637,7 +637,7 @@
 
 # print(s1.marks)
 
-# s1.marks = 100
+# s1.marks = 10
 # print(s1.marks)
 # s1.show()
 
@@ -764,6 +764,62 @@
 # In oops, Same methods, function and operators can perform different operations based on the object, data in which we used it.
 # it has many forms like: operator over loading, built-in functions, method overloading, method overriding, dunder functions, duck typing.
 # we can use these concept with or without concept of inheritance.
+#Ex: perform method overriding to achieve polymorphic behaviour without the concept of inheritance through single public method which is known as Duck typing.
+# class car:                            # class car
+#     def start(self):                      # method to start the car.
+#         print("car started...")
+
+# class bike:                          # class bike
+#     def start(self):                  # method to start the bike.
+#         print("bike started...")
+
+# class truck:                           # class truck.
+#     def start(self):                     # method to start the truck.
+#         print("truck started...")
+
+# def vehicle_start(vehicle):           # we use single public method to start vehicle from all classes without inheritance.
+#     vehicle.start()                    # trhough DUCK TYPING (public method).
+
+# c1 = car()
+# b1 = bike()
+# t1 = truck()                       # create obj for each classes 
+
+# vehicle_start(car())         # then same method call for each class but it behave differently for each class obj.
+# vehicle_start(bike())          # this is method overriding in oops.
+# vehicle_start(truck())         # this is common approach to achieve polymorhic behaviour in oops.
+
+#Ex: perform method overriding with the concept of inheritance to achieve polymorphic behaviour.
+class Vehicle:
+
+    def vehicle_start(self):
+        print("vehicle started...")
+
+class car(Vehicle):
+
+    def car_start(self):
+        print("car engine started...")
+
+class bike(Vehicle):
+
+    def bike_start(self):
+        print("bike started...")
+
+class electric(Vehicle):
+
+    def electric_start(self):
+        print("electric engine started...")
+
+v1 = Vehicle()
+c1 = car()
+b1 = bike()
+e1 = electric()
+
+e1.electric_start()
+c1.car_start()
+b1.bike_start()
+v1.vehicle_start()
+
+
 #Ex: this is a common approach to use (+) operator without concept of inheritance.
 # class Complex:
 #     def __init__(self, num1, num2):
@@ -777,31 +833,34 @@
 
 # print(com.show())
 #Ex1: operator overloading using special method to define behaviour of operator when we use it in our own classes object & data.
-class Car:
+# class Car:
 
-    def show(self):
-        print("car started with powerful engine.")
+#     def show(self):
+#         print("car started with powerful engine.")
 
-class Truck:
+# class Truck:
 
-    def show(self):
-        print("truck started...")
+#     def show(self):
+#         print("truck started...")
 
-class Bike:
+# class Bike:
 
-    def show(self):
-        print("bike engine started...")
+#     def show(self):
+#         print("bike engine started...")
 
-def vehicle_show(vehicle):
-    vehicle.show()
+# def vehicle_show(vehicle):
+#     vehicle.show()
 
-c1 = Car()
-t1 = Truck()
-b1 = Bike()
+# c1 = Car()
+# t1 = Truck()
+# b1 = Bike()
 
-vehicle_show(Car())
-vehicle_show(Bike())
-vehicle_show(Truck())
+# vehicle_show(Car())
+# vehicle_show(Bike())
+# vehicle_show(Truck())
+
+
+
 
 
 
